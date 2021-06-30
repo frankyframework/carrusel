@@ -10,5 +10,5 @@ if (function_exists('bind_textdomain_codeset'))
 }
 
 
-$MyMetatag->setJs("/public/js/carrusel.js");
+$MyMetatag->setJs("/modulos/carrusel/web/js/carrusel.js");
 ?>
