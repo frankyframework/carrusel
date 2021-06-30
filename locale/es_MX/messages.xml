@@ -1,0 +1,13 @@
+<?xml version='1.0' standalone='yes'?>
+<mensajes>
+    <prefijo>carrusel_</prefijo>
+        <mensaje>
+        <llave>duplicado</llave>
+        <valor>Ya existe un carrusel con este nombre</valor>
+    </mensaje>
+    <mensaje>
+        <llave>foto_duplicado</llave>
+        <valor>Ya existe una foto con este nombre</valor>
+    </mensaje>
+   
+</mensajes>

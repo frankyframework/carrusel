@@ -1,0 +1,7 @@
+# meses
+
+msgid "Carruseles"
+msgstr "Corousels"
+
+msgid "No hay carruseles registrados"
+msgstr "There aren't corousels registered"

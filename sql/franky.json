@@ -1,0 +1,46 @@
+{
+    "data":[
+        {
+            "php":"admin/carrusel/lista.php",
+            "css":[],
+            "js":[],
+            "jquery":[],
+            "permisos":[1,2],
+            "constante":"ADMIN_CARRUSEL_LIST",
+            "url":"admin/carrusel/",
+            "nombre":"Administrar carruseles",
+            "ajax":["base/ajax.admin.js"],
+            "status":1,
+            "editable":1,
+            "modulo":"carrusel"
+        },
+        {
+            "php":"admin/carrusel/form.php",
+            "css":[],
+            "js":["carrusel.js"],
+            "jquery":["jquery-validate"],
+            "permisos":[1,2],
+            "constante":"ADMIN_CARRUSEL_FORM",
+            "url":"admin/carrusel/form/",
+            "nombre":"Administrar carruseles",
+            "ajax":["base/ajax.admin.js"],
+            "status":1,
+            "editable":1,
+            "modulo":"carrusel"
+        },
+        {
+            "php":"admin/carrusel/fotos.php",
+            "css":["galeria.css"],
+            "js":["carrusel.js"],
+            "jquery":["ajaxform"],
+            "permisos":[1,2],
+            "constante":"ADMIN_CARRUSEL_FOTOS",
+            "url":"admin/carrusel/fotos/",
+            "nombre":"Fotos del carrusel",
+            "ajax":["base/ajax.admin.js","carrusel/ajax.admin.js"],
+            "status":1,
+            "editable":1,
+            "modulo":"carrusel"
+        }
+    ]
+}
