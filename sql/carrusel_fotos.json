@@ -25,7 +25,8 @@
                 "name":"url",
                 "type":"text",
                 "length":255,
-                "null":0
+                "null":1,
+                "default":""
             },
             {
                 "name":"createdAt",
@@ -35,7 +36,7 @@
             {
                 "name":"updateAt",
                 "type":"datetime",
-                "null":0
+                "null":1
             },
             {
                 "name":"status",
