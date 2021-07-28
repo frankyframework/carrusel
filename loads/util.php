@@ -36,15 +36,12 @@ function getCarrusel($clave)
     if (is_array($plugins)) {
         if (!in_array('slick',$plugins)) 
         {
-            $MyMetatag->setJs("/public/jquery/slick/js/slick.min.js");
-            $MyMetatag->setCss("/public/jquery/slick/css/slick-theme.css");
-            $MyMetatag->setCss("/public/jquery/slick/css/slick.css");
+            $MyFrankyMonster->addJquery('slick')
+            
         }     
     }
     else{
-        $MyMetatag->setJs("/public/jquery/slick/js/slick.min.js");
-        $MyMetatag->setCss("/public/jquery/slick/css/slick-theme.css");
-        $MyMetatag->setCss("/public/jquery/slick/css/slick.css");
+        $MyFrankyMonster->addJquery('slick')
     }
       
 
