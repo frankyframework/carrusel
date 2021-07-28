@@ -36,12 +36,12 @@ function getCarrusel($clave)
     if (is_array($plugins)) {
         if (!in_array('slick',$plugins)) 
         {
-            $MyFrankyMonster->addJquery('slick')
+            $MyFrankyMonster->addJquery('slick');
             
         }     
     }
     else{
-        $MyFrankyMonster->addJquery('slick')
+        $MyFrankyMonster->addJquery('slick');
     }
       
 
