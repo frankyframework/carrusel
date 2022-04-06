@@ -24,7 +24,7 @@ class CarruselForm extends \Franky\Form\Form
        
         $this->add(array(
                 'name' => 'nombre',
-                'label' => 'Nombre:',
+                'label' => _carrusel('Nombre'),
                 'type'  => 'text',
                 'required'  => true,
                 'atributos' => array(
@@ -39,7 +39,7 @@ class CarruselForm extends \Franky\Form\Form
 
         $this->add(array(
                 'name' => 'code',
-                'label' => 'Codigo único:',
+                'label' => _carrusel('Codigo único'),
                 'type'  => 'text',
                 'required'  => true,
                 'atributos' => array(
@@ -57,21 +57,21 @@ class CarruselForm extends \Franky\Form\Form
         $this->add(array(
             'name' => 'auto',
             'type'  => 'checkbox',
-            'options' =>  array("1" => "Inicio automatico"),
+            'options' =>  array("1" => _carrusel("Inicio automatico")),
             )
         );
       
         $this->add(array(
             'name' => 'infinito',
             'type'  => 'checkbox',
-            'options' =>  array("1" => "Loop infinito"),
+            'options' =>  array("1" => _carrusel("Loop infinito")),
             )
         );
 
         $this->add(array(
             'name' => 'dots',
             'type'  => 'checkbox',
-            'options' =>  array("1" => "Paginado"),
+            'options' =>  array("1" => _carrusel("Paginado")),
             )
         );
 
@@ -94,7 +94,7 @@ class CarruselForm extends \Franky\Form\Form
 
         $this->add(array(
             'name' => 'visible',
-            'label' => 'Items visibles',
+            'label' => _carrusel('Items visibles'),
             'type'  => 'text',
             'required'  => true,
             'atributos' => array(
@@ -110,7 +110,7 @@ class CarruselForm extends \Franky\Form\Form
                
         $this->add(array(
             'name' => 'scroll',
-            'label' => 'Scroll',
+            'label' => _carrusel('Scroll'),
             'type'  => 'text',
             'required'  => true,
             'atributos' => array(
@@ -161,7 +161,7 @@ class CarruselForm extends \Franky\Form\Form
                 'type'  => 'button',
                 'atributos' => array(
                     'class'       => 'btn btn-primary btn-big float_right ',
-                    'value' => "Guardar"
+                    'value' => _carrusel("Guardar")
                  )
                 
             )

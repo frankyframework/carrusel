@@ -55,7 +55,7 @@ $class_grid = "cont_sliders";
 $error_grid = _carrusel("No hay carruseles registrados");
 $deleteFunction = "carrusel_DeleteCarrusel";
 $frm_constante_link = ADMIN_CARRUSEL_FORM;
-$titulo_columnas_grid = array("createdAt" => "Fecha","nombre" => "Nombre","code" => "Code");
+$titulo_columnas_grid = array("createdAt" => _carrusel("Fecha"),"nombre" => _carrusel("Nombre"),"code" => _carrusel("Code"));
 $value_columnas_grid = array("createdAt", "nombre","code" );
 
 $css_columnas_grid = array("createdAt" => "w-xxxx-3" ,"nombre" => "w-xxxx-3" ,"code" => "w-xxxx-3" );

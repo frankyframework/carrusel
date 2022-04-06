@@ -23,17 +23,17 @@
                         <?php endforeach; ?>
                         <div class="w-xxxx-1">
                               <?php if($MyAccessList->MeDasChancePasar($permisos_grid)):  ?>
-                                  Eliminar
+                                  <?=_carrusel('Eliminar')?>
                               <?php endif; ?>
                         </div>
                         <div class="w-xxxx-1">
                             <?php if(!empty($frm_constante_link)): ?>
-                              Editar
+                                <?=_carrusel('Editar')?>
                             <?php endif; ?>
                             </div>
                            <div class="w-xxxx-1">
                               <?php if($MyAccessList->MeDasChancePasar($permisos_grid)):  ?>
-                                  Items
+                                <?=_carrusel('Items')?>
                               <?php endif; ?>
                         </div>
                     </div>

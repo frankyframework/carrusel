@@ -5,10 +5,10 @@
     <form name="imageform" id="imageform" method="post" enctype="multipart/form-data" action='/admin/carrusel/uploadify.php' style="clear:both">
         <input type="hidden" name="carrusel" value="<?php echo $carrusel; ?>" />
         <div id='imageloadstatus' class="w-xxxx-12">
-            <div id="progressbar" style="display:none;"><div class="progress-label">Loading...</div></div>
+            <div id="progressbar" style="display:none;"><div class="progress-label"><?_('Loading')?>...</div></div>
         </div>
         <div id='imageloadbutton' class="w-xxxx-12">
-        <a href="javascript:void(0);" onclick="$('#photoimg').click()">Subir imagenes</a>
+        <a href="javascript:void(0);" onclick="$('#photoimg').click()"><?=_carrusel('Subir imagenes')?></a>
         <input type="file" name="photos[]" id="photoimg" multiple="true" class="input-file" style='display:none' />
         </div>
     </form>
@@ -38,7 +38,7 @@
 
         <?php if($count == 0): ?>
             <div class="w-xxxx-12">
-                <div class="no_hay_datos" >No hay fotos registradas</div>
+                <div class="no_hay_datos" ><?=_carrusel('No hay fotos registradas')?></div>
             </div>
         <?php endif; ?>
                 
@@ -70,7 +70,7 @@
               progressLabel.text( progressbar.progressbar( "value" ) + "%" );
             },
             complete: function() {
-              progressLabel.text( "Completo!" );
+              progressLabel.text("<?= _carrusel("Completo!")?>");
             }
         });
         
