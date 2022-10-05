@@ -1,6 +1,6 @@
 <?php
 return array(
-     array('title'=> "Carrusel",
+     array('title'=> "Widgets",
             'children' =>  array(
             array(
              "permiso" =>   ADMINISTRAR_CARRUSEL,
