@@ -60,7 +60,7 @@ $value_columnas_grid = array("createdAt", "nombre","code" );
 
 $css_columnas_grid = array("createdAt" => "w-xxxx-3" ,"nombre" => "w-xxxx-3" ,"code" => "w-xxxx-3" );
 
-$permisos_grid = ADMINISTRAR_CARRUSEL;
+$permisos_grid = "administrar_carrusel";
 $MyFiltrosForm = new filtrosForm('paginar');
 $MyFiltrosForm->setMobile($Mobile_detect->isMobile());
 ?>

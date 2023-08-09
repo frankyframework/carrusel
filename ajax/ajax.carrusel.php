@@ -9,7 +9,7 @@ function carrusel_DeleteCarrusel($id,$status)
 
     $respuesta = null;
 
-    if($MyAccessList->MeDasChancePasar(ADMINISTRAR_CARRUSEL))
+    if($MyAccessList->MeDasChancePasar("administrar_carrusel"))
     {
         $CarruselcarruselesEntity->id(addslashes($Tokenizer->decode($id)));
         $CarruselcarruselesEntity->status($status);
@@ -42,7 +42,7 @@ function carrusel_eliminarFoto($id,$status=0)
     global $MyAccessList;
     global $MyMessageAlert;
     $respuesta =null;
-    if($MyAccessList->MeDasChancePasar(ADMINISTRAR_CARRUSEL))
+    if($MyAccessList->MeDasChancePasar("administrar_carrusel"))
     {
         $CarruselfotosEntity->id(addslashes($id));
         $CarruselfotosEntity->status($status);
@@ -76,7 +76,7 @@ function carrusel_editarFoto($id,$url)
         global $MyAccessList;
         global $MyMessageAlert;
         $respuesta =null;
-        if($MyAccessList->MeDasChancePasar(ADMINISTRAR_CARRUSEL))
+        if($MyAccessList->MeDasChancePasar("administrar_carrusel"))
         {
             $CarruselfotosEntity->id(addslashes($id));
             $CarruselfotosEntity->url($url);
@@ -108,7 +108,7 @@ function carrusel_ShowFotos($carrusel)
         $CarruselfotosEntity = new Carrusel\entity\CarruselfotosEntity();
         global $MyAccessList;
         $respuesta =null;
-        if($MyAccessList->MeDasChancePasar(ADMINISTRAR_CARRUSEL))
+        if($MyAccessList->MeDasChancePasar("administrar_carrusel"))
         {
             $carrusel = $Tokenizer->decode($carrusel);
             
@@ -147,7 +147,7 @@ function carrusel_setOrdenFoto($orden)
         global $MyAccessList;
         global $MyMessageAlert;
         $respuesta =null;
-        if($MyAccessList->MeDasChancePasar(ADMINISTRAR_CARRUSEL))
+        if($MyAccessList->MeDasChancePasar("administrar_carrusel"))
         {
            
         

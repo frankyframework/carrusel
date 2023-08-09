@@ -32,7 +32,7 @@ if($CarruselcarruselesModel->existe($CarruselcarruselesEntity->code(),$id) == RE
     $error = true;
 }
 
-if(!$MyAccessList->MeDasChancePasar(ADMINISTRAR_CARRUSEL))
+if(!$MyAccessList->MeDasChancePasar("administrar_carrusel"))
 {
     $MyFlashMessage->setMsg("error",$MyMessageAlert->Message("sin_privilegios"));
     $error = true;

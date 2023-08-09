@@ -27,7 +27,7 @@ foreach ($_FILES['photos'] as $k => $l) {
     }
 }      
      
-if(!$MyAccessList->MeDasChancePasar(ADMINISTRAR_CARRUSEL))
+if(!$MyAccessList->MeDasChancePasar("administrar_carrusel"))
 {
 
     $respuesta = array("error" => true,"msg" => $MyMessageAlert->Message("sin_privilegios"));  

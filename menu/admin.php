@@ -3,7 +3,7 @@ return array(
      array('title'=> "Widgets",
             'children' =>  array(
             array(
-             "permiso" =>   ADMINISTRAR_CARRUSEL,
+             "permiso" =>   "administrar_carrusel",
              "url" => $MyRequest->url(ADMIN_CARRUSEL_LIST),
              "etiqueta" => "Carruseles"
             )
