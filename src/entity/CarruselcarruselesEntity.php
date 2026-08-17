@@ -28,7 +28,7 @@ class CarruselcarruselesEntity
 
     public function exchangeArray($data)
     {
-        $this->id = (isset($data["id"]) ? $data["id"] : null);
+        $this->id = (isset($data["id"]) && !empty($data["id"]) ? $data["id"] : null);
         $this->code = (isset($data["code"]) ? $data["code"] : null);
         $this->dots = (isset($data["dots"]) ? $data["dots"] : null);
         $this->infinito = (isset($data["infinito"]) ? $data["infinito"] : null);

@@ -25,7 +25,7 @@ class CarruselfotosEntity
 
     public function exchangeArray($data)
     {
-        $this->id = (isset($data["id"]) ? $data["id"] : null);
+        $this->id = (isset($data["id"]) && !empty($data["id"]) ? $data["id"] : null);
         $this->id_carrusel = (isset($data["id_carrusel"]) ? $data["id_carrusel"] : null);
         $this->foto = (isset($data["foto"]) ? $data["foto"] : null);
         $this->url = (isset($data["url"]) ? $data["url"] : null);
