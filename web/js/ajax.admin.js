@@ -78,6 +78,20 @@ function carrusel_ShowFotosHTML(response)
         respuesta = JSON.parse(response);
         $("#cont_fotos").html(respuesta["html"]);
         $(".no_hay_datos").hide();
+
+        $(function() {    
+            $("#cont_fotos").sortable("destroy");
+            $( "#cont_fotos" ).sortable({
+                connectWith: ".fondo_galeria",
+                update: function(event, ui){
+                    var newOrder = $(this).sortable('toArray').toString();
+                    carrusel_setOrdenFoto(newOrder);  
+                }  ,
+                placeholder: 'ui-state-default'
+            });
+            $( "#cont_fotos" ).disableSelection();
+            makeDroppable();
+        });
         
     }
 

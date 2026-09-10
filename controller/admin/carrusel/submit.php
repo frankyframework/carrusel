@@ -7,11 +7,24 @@ use Franky\Haxor\Tokenizer;
 
 $Tokenizer = new Tokenizer();
 
+
 $CarruselcarruselesModel =  new CarruselcarruselesModel();
 $CarruselcarruselesEntity =  new CarruselcarruselesEntity($MyRequest->getRequest());
 
 $id       = $Tokenizer->decode($MyRequest->getRequest('id'));
 $callback = $Tokenizer->decode($MyRequest->getRequest('callback'));
+$dots = $Tokenizer->decode($MyRequest->getRequest('dots'));
+$infinito = $Tokenizer->decode($MyRequest->getRequest('infinito'));
+$auto = $Tokenizer->decode($MyRequest->getRequest('auto'));
+if(empty($dots)) {
+    $CarruselcarruselesEntity->dots(0);
+}
+if(empty($infinito)) {
+    $CarruselcarruselesEntity->infinito(0);
+}
+if(empty($auto)) {
+    $CarruselcarruselesEntity->auto(0);
+}
 
 $CarruselcarruselesEntity->id($id);
 
@@ -60,10 +73,9 @@ if($error == false)
         $CarruselcarruselesEntity->createdAt(date('Y-m-d H:i:s'));
         $CarruselcarruselesEntity->status(1);
     }
-    else
-    {
-        $CarruselcarruselesEntity->updateAt(date('Y-m-d H:i:s'));
-    }
+ 
+    $CarruselcarruselesEntity->updateAt(date('Y-m-d H:i:s'));
+    
     $result = $CarruselcarruselesModel->save($CarruselcarruselesEntity->getArrayCopy());
     if($result == REGISTRO_SUCCESS)
     {

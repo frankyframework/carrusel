@@ -1,66 +1,54 @@
 <?php
-use Base\Form\filtrosForm;
 use Carrusel\model\CarruselcarruselesModel;
 use Carrusel\entity\CarruselcarruselesEntity;
-use Franky\Core\paginacion;
 use Franky\Haxor\Tokenizer;
 
-$MyPaginacion = new paginacion();
-$Tokenizer = new Tokenizer();
+if ($MyRequest->isAjax()) {
+        $callback	= $MyRequest->getRequest('callback');
+        $filters = $MyRequest->getRequest('filters');
+        $dataPost = json_decode(stripslashes($filters),true);
+        $dataPost = $dataPost['rules'];
+        $requestFranky = [];
+        $request = [];
+        foreach($dataPost as $data) {
+                $request[$data['field']] = $MyRequest->Sanitizacion($data['data']);
+        }        
+        $sortInput  = (!empty($MyRequest->getRequest('sidx',"createdAt")) ? : "createdAt");
+        $Tokenizer = new Tokenizer();
+        $CarruselcarruselesModel =  new CarruselcarruselesModel();
+        $CarruselcarruselesEntity =  new CarruselcarruselesEntity();
+        $CarruselcarruselesModel->setPage($MyRequest->getRequest('page',1));
+        $CarruselcarruselesModel->setTampag($MyRequest->getRequest('rows',12));
+        $CarruselcarruselesModel->setOrdensql($sortInput." ".$MyRequest->getRequest('sord',"ASC"));
 
 
-$MyPaginacion->setPage($MyRequest->getRequest('page',1));
-$MyPaginacion->setCampoOrden($MyRequest->getRequest('por',"createdAt"));
-$MyPaginacion->setOrden($MyRequest->getRequest('order',"ASC"));
-$MyPaginacion->setTampageDefault($MyRequest->getRequest('tampag',25));		
-$busca_b	= $MyRequest->getRequest('busca_b');	
+        $result	 = $CarruselcarruselesModel->getData([]);
+        $dataRows = ["rows" => [], "total" => ceil($CarruselcarruselesModel->getTotal() / $MyRequest->getRequest('rows',12)), "page" => (int)$MyRequest->getRequest('page',1),"records" => $CarruselcarruselesModel->getTotal()];
+    
+        if($CarruselcarruselesModel->getTotal() > 0)
+        {
+                while($registro = $CarruselcarruselesModel->getRows())
+                {
+                        $registro = array_filter($registro, function($llave) {
+                                return !is_numeric($llave);
+                        }, ARRAY_FILTER_USE_KEY);               
 
-
-$CarruselcarruselesModel =  new CarruselcarruselesModel();
-$CarruselcarruselesEntity =  new CarruselcarruselesEntity();
-$CarruselcarruselesModel->setPage($MyPaginacion->getPage());
-$CarruselcarruselesModel->setTampag($MyPaginacion->getTampageDefault());
-$CarruselcarruselesModel->setOrdensql($MyPaginacion->getCampoOrden()." ".$MyPaginacion->getOrden());
-
-
-$result	 = $CarruselcarruselesModel->getData([]);
-$MyPaginacion->setTotal($CarruselcarruselesModel->getTotal());
-
-$lista_admin_data = array();
-if($CarruselcarruselesModel->getTotal() > 0)
-{
-	$iRow = 0;	
-
-	while($registro = $CarruselcarruselesModel->getRows())
-	{
-		$thisClass  = ((($iRow % 2) == 0) ? "formFieldDk" : "formFieldLt");
-                
-
-		$lista_admin_data[] = array_merge($registro,array(
-                "id" => $Tokenizer->token("carrusel", $registro["id"]),
-                "callback" => $Tokenizer->token("carrusel", $MyRequest->getURI()),    
-                "createdAt" 	=> getFechaUI($registro["createdAt"]),
-                "thisClass"     => $thisClass,
-                "nuevo_estado"  => ($registro["status"] == 1 ?"desactivar" : "activar"),
-                ));
-                $iRow++;
+                        $dataRows['rows'][]= array_merge($registro,array(
+                        "id" => $Tokenizer->token("carrusel", $registro["id"]),
+                        "callback" => $Tokenizer->token("carrusel", $MyRequest->getURI()),    
+                        "createdAt" 	=> getFechaUI($registro["createdAt"]),
+                        "status"  => ($registro["status"] == 1 ?"desactivar" : "activar"),
+                        ));
+                        $iRow++;
+                }
         }
+        header('Content-Type: application/json; charset=utf-8');
+        echo $callback . '(' . json_encode($dataRows). ');';
+        die;
+} else {
+        $MyMetatag->setJs("/public/plugins/jqGrid/js/jquery.jqGrid.js");
+        $MyMetatag->setJs("/public/plugins/jqGrid/js/i18n/grid.locale-$lang_root.js");
+        $MyMetatag->setCSS("/public/plugins/jqGrid/css/ui.jqgrid.css");
 }
 
-
-
-//$MyFrankyMonster->setPHPFile(getVista("admin/template/grid.phtml"));
-$title_grid = _carrusel("Carruseles");
-$class_grid = "cont_sliders";
-$error_grid = _carrusel("No hay carruseles registrados");
-$deleteFunction = "carrusel_DeleteCarrusel";
-$frm_constante_link = ADMIN_CARRUSEL_FORM;
-$titulo_columnas_grid = array("createdAt" => _carrusel("Fecha"),"nombre" => _carrusel("Nombre"),"code" => _carrusel("Code"));
-$value_columnas_grid = array("createdAt", "nombre","code" );
-
-$css_columnas_grid = array("createdAt" => "w-xxxx-3" ,"nombre" => "w-xxxx-3" ,"code" => "w-xxxx-3" );
-
-$permisos_grid = "administrar_carrusel";
-$MyFiltrosForm = new filtrosForm('paginar');
-$MyFiltrosForm->setMobile($Mobile_detect->isMobile());
 ?>

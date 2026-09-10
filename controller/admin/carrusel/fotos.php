@@ -7,6 +7,10 @@ use Franky\Haxor\Tokenizer;
 
 $Tokenizer = new Tokenizer();
 $carrusel	= $Tokenizer->decode($MyRequest->getRequest('id'));
+
+if(empty($carrusel)) {
+    $MyRequest->redirect($MyRequest->getReferer());
+}
 $CarruselcarruselesEntity = new CarruselcarruselesEntity();
 $CarruselcarruselesModel = new CarruselcarruselesModel();
 $lista_admin_data = array();
@@ -18,6 +22,7 @@ if($CarruselcarruselesModel->getData($CarruselcarruselesEntity->getArrayCopy()) 
     $registro = $CarruselcarruselesModel->getRows();
     
     $carrusel_nombre = $registro["nombre"];
+    $carrusel_code = $registro["code"];
     
     $CarruselfotosModel = new CarruselfotosModel();
     $CarruselfotosEntity = new CarruselfotosEntity();

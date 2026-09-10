@@ -1,6 +1,6 @@
 <div class="content">
      <div class="w-xxxx-12"><?=breadcrumbs(); ?></div>
-    <h1 class="titulo_seccion_admin"><?=$carrusel_nombre; ?></h1>
+    <h1 class="titulo_seccion_admin"><?=$carrusel_nombre; ?> (<?=$carrusel_code; ?>)</h1>
     
     <form name="imageform" id="imageform" method="post" enctype="multipart/form-data" action='/admin/carrusel/uploadify.php' style="clear:both">
         <input type="hidden" name="carrusel" value="<?php echo $carrusel; ?>" />
@@ -94,21 +94,6 @@
 
                     carrusel_ShowFotos('<?php echo $carrusel; ?>');
                     $("#photoimg").val('');
-
-
-                        $(function() {    
-                        $( "#cont_fotos" ).sortable({
-                            connectWith: ".fondo_galeria",
-                            update: function(event, ui){
-                                var newOrder = $(this).sortable('toArray').toString();
-                                carrusel_setOrdenFoto(newOrder);  
-                            }  ,
-                            placeholder: 'ui-state-default'
-                        });
-                        $( "#cont_fotos" ).disableSelection();
-                        });
-                        
-
                 },
                 error:function(){
                     
